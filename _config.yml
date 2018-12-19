@@ -1,0 +1,11 @@
+# basic options
+title: Quickstart Guide
+author: Sunil Jadhav
+email: write2sunil@gmail.com
+description: A guide to get quickly started on ownCloud
+twitter_username: messwithsunil
+github_username:  gitsgulabjamun
+
+# Build settings
+markdown: kramdown
+theme: minima
