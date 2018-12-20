@@ -1,17 +1,17 @@
-# Table Of Contents
+# Table of contents
 
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-- [Table Of Contents](#table-of-contents)
-	- [Install ownCloud](#install-owncloud)
+- [Table of contents](#table-of-contents)
+- [Install ownCloud](#install-owncloud)
 	- [Prerequisites](#prerequisites)
-		- [Install Red Hat Repository](#install-red-hat-repository)
-		- [Install EPEL repository](#install-epel-repository)
-		- [Install LAMP](#install-lamp)
-			- [Install Apache and PHP](#install-apache-and-php)
-				- [Install Database](#install-database)
-					- [Install MySQL](#install-mysql)
-					- [Install the MariaDB database](#install-the-mariadb-database)
+	- [Install Red Hat Repository](#install-red-hat-repository)
+	- [Install EPEL repository](#install-epel-repository)
+	- [Install LAMP](#install-lamp)
+		- [Install Apache and PHP](#install-apache-and-php)
+			- [Install Database](#install-database)
+				- [Install MySQL](#install-mysql)
+				- [Install the MariaDB database](#install-the-mariadb-database)
 - [Create ownCloud repository](#create-owncloud-repository)
 	- [Import the ownCloud Signing Key](#import-the-owncloud-signing-key)
 	- [Add the ownCloud Repository in your system](#add-the-owncloud-repository-in-your-system)
@@ -19,18 +19,20 @@
 		- [Set the required permissions on ownCloud directory](#set-the-required-permissions-on-owncloud-directory)
 		- [Enable Apache and Database](#enable-apache-and-database)
 	- [Create a Database for ownCloud](#create-a-database-for-owncloud)
-- [Configure SELinux and Firewall Rules for OwnCloud](#configure-selinux-and-firewall-rules-for-owncloud)
+	- [Configure SELinux and Firewall Rules for OwnCloud](#configure-selinux-and-firewall-rules-for-owncloud)
 - [Setup ownCloud with the Installation wizard](#setup-owncloud-with-the-installation-wizard)
 - [Allow access to ownCloud Server](#allow-access-to-owncloud-server)
 - [Add users to ownCloud](#add-users-to-owncloud)
 - [Connect client to the ownCloud server](#connect-client-to-the-owncloud-server)
 
 <!-- /TOC -->
+
+
 # Install ownCloud
 
 This guide describes administration tasks for ownCloud, the flexible open source file synchronization and sharing solution. ownCloud includes the ownCloud server, which runs on Linux, client applications for Microsoft Windows, Mac OS X and Linux, and mobile clients for the Android and Apple iOS operating systems.
 
-# Prerequisites
+## Prerequisites
 
 Check that your system fulfills the following prerequisites:
 
@@ -79,7 +81,7 @@ Use the following command to install PHP:
 
 You can choose to either install MySQL or the MariaDB database for your requirement.
 
-#####Install MySQL
+##### Install MySQL
 
 MySQL is a freely available open source Relational Database Management System (RDBMS) that uses Structured Query Language (SQL). It will enable adding, accessing and managing content in your database.
 
@@ -91,7 +93,7 @@ Use the following command to install MySQL:
 
 	/usr/bin/mysql_secure_installation
 
-#####Install the MariaDB database
+##### Install the MariaDB database
 
 MariaDB is a fast, scalable, and robust database server that provides an SQL interface for accessing data.
 
@@ -151,13 +153,13 @@ Use the yum command to install the ownCloud Package:
 
 Use the following commands to start and enable Apache and database service:
 
-`systemctl start httpd`
+		systemctl start httpd
 
-`systemctl start mariadb`
+		systemctl start mariadb
 
-`systemctl enable httpd`
+		systemctl enable httpd
 
-`systemctl enable mariadb`
+		systemctl enable mariadb
 
 
 This command will enable services at startup.
@@ -176,7 +178,7 @@ This command will enable services at startup.
 
 
 
-	     `MariaDB [(none)]> create database owncloud10db;`
+		create database owncloud10db;
 
 4. Grant the “clouddbuser” permission to access the “owncloud10db” database with a password that you can specify on the localhost:
 
@@ -184,10 +186,10 @@ This command will enable services at startup.
 
 5. Flush all privileges and exit:
 
-		MariaDB [(none)]> FLUSH PRIVILEGES;
-		MariaDB [(none)]> exit
+		FLUSH PRIVILEGES;
+		exit
 
-# Configure SELinux and Firewall Rules for OwnCloud
+## Configure SELinux and Firewall Rules for OwnCloud
 
 Security Enhanced Linux or SELinux is a kernel security module that supports access control. If SELinux is enabled on your server, then write the following SE Linux rules for ownCloud:
 
@@ -213,7 +215,7 @@ If a firewall is enabled and configured on your server then allow *http* and *ht
 
 To configure OwnCloud, go to the following URL:
 
-*_http://Your-Server-Ip-address/owncloud_*
+*_http://IP-address/owncloud_*
 
 
 ![owncloudsetup1](https://user-images.githubusercontent.com/45939197/50276776-c8979d00-0468-11e9-965d-b4f4757f8713.jpg)
@@ -222,7 +224,7 @@ To configure OwnCloud, go to the following URL:
 ![owncloudsetup2](https://user-images.githubusercontent.com/45939197/50276826-e82ec580-0468-11e9-9e6c-ee4620a72f7f.jpg)
 
 
-Provide your user name, password, database information and the ownCloud folder details. Once you provide all the required details, Click on “Finish Setup”.
+Provide your user name, password, database information and the ownCloud folder details. Once you provide all the required details, Click on **Finish Setup**.
 
 The ownCloud Logon Page appears:
 
@@ -272,32 +274,36 @@ As an administrator, you can decide how the users must connect to the ownCloud s
 
   1. Add the port:
 
-      sudo firewall-cmd --permanent --add-port=8080/tcp
-      sudo firewall-cmd –reload`
+		  sudo firewall-cmd --permanent --add-port=8080/tcp
 
-  2. Restart the httpd service:
-      sudo systemctl restart httpd
+		  sudo firewall-cmd –reload
+ 2. Restart the httpd service:
+
+			sudo systemctl restart httpd
+
+
+
 
 10. For RHEL 6 / CentOS 6:
 
 	1. Edit the iptables:
-      sudo vi /etc/sysconfig/iptables
+		      sudo vi /etc/sysconfig/iptables
   2. Add the new custom port line:
-      -A INPUT -m state --state NEW -m tcp -p tcp --dport 8090 -j ACCEPT
+		      -A INPUT -m state --state NEW -m tcp -p tcp --dport 8090 -j ACCEPT
 
   3. Save and exit the file and restart iptables service. 	
-      sudo service httpd restart
+			sudo service httpd restart
 
 11. Verify the port using command:
 
-    sudo netstat -tulpn | grep :8090
+		sudo netstat -tulpn | grep :8090
 
 12. If netstat command is not found, install the following package.
 
-    sudo yum install net-tools
+		    sudo yum install net-tools
 
 13. Verify the Apache test page from the browser using URL:
-    http://IP-address:8080
+*_http://IP-address:8080_*
 
 # Add users to ownCloud
 
@@ -308,7 +314,7 @@ Perform the following steps to add a user:
 1. Go to the ownCloud server URL.
 
 2. Enter your username and password.
-
+>
 The ownCloud dashboard appears:
 
 ![Dashboard](https://user-images.githubusercontent.com/45939197/50276726-a56ced80-0468-11e9-905b-18ad4bba9f0a.png)
