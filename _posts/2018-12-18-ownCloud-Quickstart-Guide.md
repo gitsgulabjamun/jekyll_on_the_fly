@@ -215,19 +215,19 @@ To configure OwnCloud, go to the following URL:
 *_http://<Your-Server-Ip-address>/owncloud_*
 
 
-![owncloudsetup1](//jekyll_on_the_fly/img/OwnCloud_wizard_setup_1.jpg)
+![owncloudsetup1](https://user-images.githubusercontent.com/45939197/50276776-c8979d00-0468-11e9-965d-b4f4757f8713.jpg)
 
-![owncloudsetup2](/jekyll_on_the_fly/img/ownCloud_wizard_setup_2.jpgg)
+![owncloudsetup2](https://user-images.githubusercontent.com/45939197/50276826-e82ec580-0468-11e9-9e6c-ee4620a72f7f.jpg)
 
 Provide your user name, password, database information and the ownCloud folder details. Once you provide all the required details, Click on “Finish Setup”.
 
 The ownCloud Logon Page appears:
 
-![owncloudsetup3](img/OwnCloud_wizard_setup_3.jpg)
+![owncloudsetup3](https://user-images.githubusercontent.com/45939197/50276849-f846a500-0468-11e9-9ab7-5b22165174b7.jpg)
 
 Enter the username and password and the ownCloud dashboard appears:
 
-![owncloudsetup4](/img/OwnCloud_wizard_setup_4.jpg)
+![owncloudsetup4](https://user-images.githubusercontent.com/45939197/50276884-0d233880-0469-11e9-907f-3dc63c6ae8e0.jpg)
 
 The ownCloud is installed successfully on your system and you can start sharing files.
 
@@ -306,7 +306,7 @@ Perform the following steps to add a user:
 
 The ownCloud dashboard appears:
 
-![Dashboard](//img/ownCloud_dashboard.png)
+![Dashboard](https://user-images.githubusercontent.com/45939197/50276726-a56ced80-0468-11e9-905b-18ad4bba9f0a.png)
 
 3. Select **users** from the **Create** list.
 
@@ -322,7 +322,7 @@ The ownCloud dashboard appears:
 
 You can connect to the ownCloud server from a client such as your mobile or a desktop. You can access or synchronize files from your mobile or desktop to ownCloud. For this, you must install the ownCloud client on your system.
 
-1. Download the ownCloud Desktop client from the [ownCloud Desktop Clients] (https://owncloud.com/download/#desktop-clients) download page.
+1. Download the ownCloud Desktop client from the [ownCloud Desktop Clients](https://owncloud.com/download/#desktop-clients) download page.
 
 2. Click the downloaded setup file. The installation wizard appears.
 
