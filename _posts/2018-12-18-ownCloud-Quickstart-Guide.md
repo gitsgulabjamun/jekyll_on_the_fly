@@ -26,12 +26,11 @@
 - [Connect client to the ownCloud server](#connect-client-to-the-owncloud-server)
 
 <!-- /TOC -->
-
-## Install ownCloud
+# Install ownCloud
 
 This guide describes administration tasks for ownCloud, the flexible open source file synchronization and sharing solution. ownCloud includes the ownCloud server, which runs on Linux, client applications for Microsoft Windows, Mac OS X and Linux, and mobile clients for the Android and Apple iOS operating systems.
 
-## Prerequisites
+# Prerequisites
 
 Check that your system fulfills the following prerequisites:
 
@@ -42,7 +41,7 @@ Check that your system fulfills the following prerequisites:
  - Apache server and PHP extensions    installed (Lamp stack)
  - MariaDB installed
 
-### Install Red Hat Repository
+## Install Red Hat Repository
 
 Install all the required software and utilities from the Red Hat repository.
 
@@ -56,17 +55,17 @@ To enable Red Hat software collection repository in RHEL7, use the following com
  server.
 
 
-### Install EPEL repository
+## Install EPEL repository
 
 Use the following command to enable EPEL repository and yum utils:
 
 `yum install epel-release yum-utils -y`
 
-### Install LAMP
+## Install LAMP
 
 Before installation, set up a running LAMP stack. A Lamp stack is combination of L- Linux Operating system, A – Apache Web Server, M-MySQL or MariaDB Database, and P-PHP or any other scripting language to display the data. If you already have a running LAMP stack, skip this step. Else, use the following commands to setup lamp stack:
 
-#### Install Apache and PHP
+### Install Apache and PHP
 
 Use the following command to install PHP:
 
@@ -76,11 +75,11 @@ Use the following command to install PHP:
 
 	yum install httpd php php-mysql php-dom php-mbstring php-gd php-pdo php-json php-xml php-zip php-curl php-mcrypt php-pear php-intl setroubleshoot-server -y
 
-##### Install Database
+#### Install Database
 
 You can choose to either install MySQL or the MariaDB database for your requirement.
 
-######Install MySQL
+#####Install MySQL
 
 MySQL is a freely available open source Relational Database Management System (RDBMS) that uses Structured Query Language (SQL). It will enable adding, accessing and managing content in your database.
 
@@ -92,7 +91,7 @@ Use the following command to install MySQL:
 
 	/usr/bin/mysql_secure_installation
 
-######Install the MariaDB database
+#####Install the MariaDB database
 
 MariaDB is a fast, scalable, and robust database server that provides an SQL interface for accessing data.
 
@@ -125,7 +124,9 @@ For more information on Code Signing, see [_ownCloud Code Signing_](https://doc.
 Use the following commands to add it on CentOS 7:
 
 `cd /etc/yum.repos.d/`
+
 `wget`
+
 `http://download.owncloud.org/download/repositories/production/CentOS_7/ce:stable.repo`
 
 Use the following code to add it on RHEL 7:
@@ -190,17 +191,17 @@ This command will enable services at startup.
 
 Security Enhanced Linux or SELinux is a kernel security module that supports access control. If SELinux is enabled on your server, then write the following SE Linux rules for ownCloud:
 
-`semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/owncloud/data'`
+	semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/owncloud/data'`
 
-`restorecon '/var/www/html/owncloud/data'`
+	restorecon '/var/www/html/owncloud/data'
 
-`semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/owncloud/config'`
+	semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/owncloud/config'
 
-`restorecon '/var/www/html/owncloud/config'`
+	restorecon '/var/www/html/owncloud/config'
 
-`semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/owncloud/apps'`
+	semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/owncloud/apps'
 
-`restorecon '/var/www/html/owncloud/apps'`
+	restorecon '/var/www/html/owncloud/apps'
 
 If a firewall is enabled and configured on your server then allow *http* and *https* ports using the following firewall-cmd command:
 
@@ -212,12 +213,14 @@ If a firewall is enabled and configured on your server then allow *http* and *ht
 
 To configure OwnCloud, go to the following URL:
 
-*_http://<Your-Server-Ip-address>/owncloud_*
+*_http://Your-Server-Ip-address/owncloud_*
 
 
 ![owncloudsetup1](https://user-images.githubusercontent.com/45939197/50276776-c8979d00-0468-11e9-965d-b4f4757f8713.jpg)
 
+
 ![owncloudsetup2](https://user-images.githubusercontent.com/45939197/50276826-e82ec580-0468-11e9-9e6c-ee4620a72f7f.jpg)
+
 
 Provide your user name, password, database information and the ownCloud folder details. Once you provide all the required details, Click on “Finish Setup”.
 
@@ -225,9 +228,11 @@ The ownCloud Logon Page appears:
 
 ![owncloudsetup3](https://user-images.githubusercontent.com/45939197/50276849-f846a500-0468-11e9-9ab7-5b22165174b7.jpg)
 
+
 Enter the username and password and the ownCloud dashboard appears:
 
 ![owncloudsetup4](https://user-images.githubusercontent.com/45939197/50276884-0d233880-0469-11e9-907f-3dc63c6ae8e0.jpg)
+
 
 The ownCloud is installed successfully on your system and you can start sharing files.
 
@@ -241,7 +246,7 @@ As an administrator, you can decide how the users must connect to the ownCloud s
 
 >  `sudo vi /etc/httpd/conf/httpd.con`
 
- The configuration file opens. The default listening port is 80.
+> 	The configuration file opens. The default listening port is 80.
 
 3. Find the following line:
 
@@ -307,6 +312,7 @@ Perform the following steps to add a user:
 The ownCloud dashboard appears:
 
 ![Dashboard](https://user-images.githubusercontent.com/45939197/50276726-a56ced80-0468-11e9-905b-18ad4bba9f0a.png)
+
 
 3. Select **users** from the **Create** list.
 
