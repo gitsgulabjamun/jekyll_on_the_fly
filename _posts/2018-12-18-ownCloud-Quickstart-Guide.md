@@ -277,26 +277,22 @@ As an administrator, you can decide how the users must connect to the ownCloud s
 
 9. For RHEL 7 / CentOS 7:
 
-  1. Add the port:
+    1. Add the port:
 
-		  sudo firewall-cmd --permanent --add-port=8080/tcp
+  		  sudo firewall-cmd --permanent --add-port=8080/tcp
 
-		  sudo firewall-cmd –reload
- 2. Restart the httpd service:
+  		  sudo firewall-cmd –reload
+    2. Restart the Apache httpd service:
 
 			sudo systemctl restart httpd
-
-
-
-
 10. For RHEL 6 / CentOS 6:
 
-	1. Edit the iptables:
+    1. Edit the iptables:
 		      sudo vi /etc/sysconfig/iptables
-  2. Add the new custom port line:
+    2. Add the new custom port line:
 		      -A INPUT -m state --state NEW -m tcp -p tcp --dport 8090 -j ACCEPT
 
-  3. Save and exit the file and restart iptables service. 	
+    3. Save and exit the file and restart iptables service. 	
 			sudo service httpd restart
 
 11. Verify the port using command:
