@@ -21,7 +21,7 @@
 	- [Create a Database for ownCloud](#create-a-database-for-owncloud)
 	- [Configure SELinux and Firewall Rules for OwnCloud](#configure-selinux-and-firewall-rules-for-owncloud)
 - [Setup ownCloud with the Installation wizard](#setup-owncloud-with-the-installation-wizard)
-- [Change port access to ownCloud Server](#change-port-access-to-owncloud-server)
+- [Change access port for ownCloud Server](#change-access-port-for-owncloud-server)
 - [Add users to ownCloud](#add-users-to-owncloud)
 - [Connect client to the ownCloud server](#connect-client-to-the-owncloud-server)
 
@@ -59,7 +59,7 @@ To enable Red Hat software collection repository in RHEL7, use the following com
 
 ## Install EPEL repository
 
-EPEL (Extra Packages for Enterprise Linux) is an open source and free community based repository project that provides add-on software packages for Linux distribution including RHEL (Red Hat Enterprise Linux), CentOS, and Scientific Linux.
+Extra Packages for Enterprise Linux (EPEL) is an open source and free community based repository project that provides add-on software packages for Linux distribution including RHEL (Red Hat Enterprise Linux), CentOS, and Scientific Linux.
 
 Use the following command to enable EPEL repository and yum utils:
 
@@ -242,7 +242,7 @@ Enter the username and password and the ownCloud dashboard appears:
 
 The ownCloud is installed successfully on your system and you can start sharing files.
 
-# Change port access to ownCloud Server
+# Change access port for ownCloud Server
 
 As an administrator, you can decide how the users must connect to the ownCloud server.  You must configure the webserver (Apache in this case ) to allow access to the desired port. The default port access is (80, 443). Edit the Apache configuration file at the path “/etc/httpd/conf/httpd.conf” to change the listening port to 8080.
 
@@ -250,27 +250,28 @@ As an administrator, you can decide how the users must connect to the ownCloud s
 
 2. To change the ports use the following command:
 
->  `sudo vi /etc/httpd/conf/httpd.con`
+    `sudo vi /etc/httpd/conf/httpd.con`
 
-> 	The configuration file opens. The default listening port is 80.
+
+    The configuration file opens. The default listening port is 80.
 
 3. Find the following line:
 
-> `Listen 80`
+    `Listen 80`
 
 4. Change it to the following line to the configuration file:
 
-> `Listen 8080`
+    `Listen 8080`
 
 5. Save and close the file.
 
 6. Check that new port number 8080 is not blocked in SELinux and Firewall:
 
-> `sudo semanage port -a -t http_port_t -p tcp 8080`
+    `sudo semanage port -a -t http_port_t -p tcp 8080`
 
 7. If the semanage command is not found, install the following package:
 
-> `sudo yum install policycoreutils-python`
+    `sudo yum install policycoreutils-python`
 
 8. To allow port 8080 via the firewall, perform the following steps:
 
