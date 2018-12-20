@@ -293,11 +293,14 @@ As an administrator, you can decide how the users must connect to the ownCloud s
        `sudo vi /etc/sysconfig/iptables`
     2. Add the new custom port line:
 
-       `-A INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT`
+      ```
+      -A INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT
+      ```
 
     3. Save and exit the file and restart iptables service.
 
-       `sudo service httpd restart`
+
+         `sudo service httpd restart`
 
 11. Verify the port using command:
 
