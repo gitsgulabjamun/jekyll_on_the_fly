@@ -321,10 +321,7 @@ Perform the following steps to add a user:
 2. Enter your username and password.
 
   The ownCloud dashboard appears:
-
 ![Dashboard](https://user-images.githubusercontent.com/45939197/50276726-a56ced80-0468-11e9-905b-18ad4bba9f0a.png)
-
-
 3. Select **users** from the **Create** list.
 
 4. Enter the username in the **Username** box
