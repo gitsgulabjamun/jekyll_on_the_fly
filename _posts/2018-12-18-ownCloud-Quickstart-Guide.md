@@ -308,7 +308,7 @@ As an administrator, you can decide how the users must connect to the ownCloud s
         sudo yum install net-tools
 
 13. Verify the Apache test page from the browser using URL:
-*_http://IP-address:8080_*
+*http://IP-address:8080*
 
 # Add users to ownCloud
 
