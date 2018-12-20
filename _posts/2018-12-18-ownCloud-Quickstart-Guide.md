@@ -215,19 +215,19 @@ To configure OwnCloud, go to the following URL:
 *_http://<Your-Server-Ip-address>/owncloud_*
 
 
-![owncloudsetup1](//jekyll_on_the_fly/img/ownCloud_wizard_setup_1.jpg)
+![owncloudsetup1](//jekyll_on_the_fly/img/OwnCloud_wizard_setup_1.jpg)
 
-![owncloudsetup2](//jekyll_on_the_fly/img/ownCloud_wizard_setup_2.jpgg)
+![owncloudsetup2](/jekyll_on_the_fly/img/ownCloud_wizard_setup_2.jpgg)
 
 Provide your user name, password, database information and the ownCloud folder details. Once you provide all the required details, Click on “Finish Setup”.
 
 The ownCloud Logon Page appears:
 
-![owncloudsetup3](//jekyll_on_the_fly/img/ownCloud_wizard_setup_3.jpg)
+![owncloudsetup3](img/OwnCloud_wizard_setup_3.jpg)
 
 Enter the username and password and the ownCloud dashboard appears:
 
-![owncloudsetup4](//jekyll_on_the_fly/img/ownCloud_wizard_setup_4.jpg)
+![owncloudsetup4](/img/OwnCloud_wizard_setup_4.jpg)
 
 The ownCloud is installed successfully on your system and you can start sharing files.
 
