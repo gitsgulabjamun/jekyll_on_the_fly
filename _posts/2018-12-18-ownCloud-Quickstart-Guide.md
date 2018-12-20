@@ -21,7 +21,7 @@
 	- [Create a Database for ownCloud](#create-a-database-for-owncloud)
 	- [Configure SELinux and Firewall Rules for OwnCloud](#configure-selinux-and-firewall-rules-for-owncloud)
 - [Setup ownCloud with the Installation wizard](#setup-owncloud-with-the-installation-wizard)
-- [Allow access to ownCloud Server](#allow-access-to-owncloud-server)
+- [Change port access to ownCloud Server](#change-port-access-to-owncloud-server)
 - [Add users to ownCloud](#add-users-to-owncloud)
 - [Connect client to the ownCloud server](#connect-client-to-the-owncloud-server)
 
@@ -59,6 +59,8 @@ To enable Red Hat software collection repository in RHEL7, use the following com
 
 ## Install EPEL repository
 
+EPEL (Extra Packages for Enterprise Linux) is an open source and free community based repository project that provides add-on software packages for Linux distribution including RHEL (Red Hat Enterprise Linux), CentOS, and Scientific Linux.
+
 Use the following command to enable EPEL repository and yum utils:
 
 `yum install epel-release yum-utils -y`
@@ -69,7 +71,7 @@ Before installation, set up a running LAMP stack. A Lamp stack is combination of
 
 ### Install Apache and PHP
 
-Use the following command to install PHP:
+Use the following command to install Apache and PHP:
 
 	yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm -y
 
@@ -109,7 +111,9 @@ Create your ownCloud repository by downloading and installing the ownCloud insta
 
 ## Import the ownCloud Signing Key
 
-Use Linux installer for the installation of ownCloud. Import the ownCloud signing key using the rpm command.
+Use Linux installer for the installation of ownCloud. Import the ownCloud signing key using the rpm command.ownCloud supports code signing for the core releases, and its ownCloud applications. Code signing gives users an additional layer of security by ensuring that nobody other than authorized individuals can push updates.
+
+
 
 Use the following command to download the signing key on CentOS 7:
 
@@ -123,7 +127,7 @@ For more information on Code Signing, see [_ownCloud Code Signing_](https://doc.
 
 ## Add the ownCloud Repository in your system
 
-Use the following commands to add it on CentOS 7:
+Use the following commands to add the ownCloud repsository on CentOS 7:
 
 `cd /etc/yum.repos.d/`
 
@@ -131,7 +135,7 @@ Use the following commands to add it on CentOS 7:
 
 `http://download.owncloud.org/download/repositories/production/CentOS_7/ce:stable.repo`
 
-Use the following code to add it on RHEL 7:
+Use the following code to add the ownCloud respository on RHEL 7:
 
 `cd /etc/yum.repos.d/`
 
@@ -182,7 +186,7 @@ This command will enable services at startup.
 
 4. Grant the “clouddbuser” permission to access the “owncloud10db” database with a password that you can specify on the localhost:
 
-		MariaDB [(none)]> grant all on owncloud10db.* to 'clouddbuser'@'localhost' identified by '{Passwd-here}';
+		grant all on owncloud10db.* to 'clouddbuser'@'localhost' identified by '{Passwd-here}';
 
 5. Flush all privileges and exit:
 
@@ -215,7 +219,7 @@ If a firewall is enabled and configured on your server then allow *http* and *ht
 
 To configure OwnCloud, go to the following URL:
 
-*_http://IP-address/owncloud_*
+*http://IP-address/owncloud*
 
 
 ![owncloudsetup1](https://user-images.githubusercontent.com/45939197/50276776-c8979d00-0468-11e9-965d-b4f4757f8713.jpg)
@@ -224,7 +228,7 @@ To configure OwnCloud, go to the following URL:
 ![owncloudsetup2](https://user-images.githubusercontent.com/45939197/50276826-e82ec580-0468-11e9-9e6c-ee4620a72f7f.jpg)
 
 
-Provide your user name, password, database information and the ownCloud folder details. Once you provide all the required details, Click on **Finish Setup**.
+Provide your user name, password, database information and the ownCloud folder details. Once you provide all the required details, click  **Finish Setup**.
 
 The ownCloud Logon Page appears:
 
@@ -238,7 +242,7 @@ Enter the username and password and the ownCloud dashboard appears:
 
 The ownCloud is installed successfully on your system and you can start sharing files.
 
-# Allow access to ownCloud Server
+# Change port access to ownCloud Server
 
 As an administrator, you can decide how the users must connect to the ownCloud server.  You must configure the webserver (Apache in this case ) to allow access to the desired port. The default port access is (80, 443). Edit the Apache configuration file at the path “/etc/httpd/conf/httpd.conf” to change the listening port to 8080.
 
@@ -296,11 +300,11 @@ As an administrator, you can decide how the users must connect to the ownCloud s
 
 11. Verify the port using command:
 
-		sudo netstat -tulpn | grep :8090
+        sudo netstat -tulpn | grep :8090
 
 12. If netstat command is not found, install the following package.
 
-		    sudo yum install net-tools
+        sudo yum install net-tools
 
 13. Verify the Apache test page from the browser using URL:
 *_http://IP-address:8080_*
@@ -314,8 +318,8 @@ Perform the following steps to add a user:
 1. Go to the ownCloud server URL.
 
 2. Enter your username and password.
->
-The ownCloud dashboard appears:
+
+  The ownCloud dashboard appears:
 
 ![Dashboard](https://user-images.githubusercontent.com/45939197/50276726-a56ced80-0468-11e9-905b-18ad4bba9f0a.png)
 
